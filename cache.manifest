@@ -1,25 +1,10 @@
 CACHE MANIFEST 
 
-CACHE: 
-fonts/FONTS.LICENSE
-fonts/LiberationMono-Regular.ttf
-fonts/README.txt
-kpatch/900.c
-kpatch/900.d
-kpatch/900.elf
-kpatch/900.o
-kpatch/Makefile
-kpatch/script.ld
-kpatch/types.h
-kpatch/utils.h
+CACHE:
 cache.html
 config.mjs
 alert.mjs
 payload.bin
-img.jpg
-COPYING
-LICENSE
-README.md
 send.mjs
 about.html
 index.html
@@ -27,7 +12,6 @@ lapse.mjs
 payload.js
 psfree.mjs
 rop/900.mjs
-style.css
 module/rw.mjs
 module/utils.mjs
 module/mem.mjs
