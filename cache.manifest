@@ -1,6 +1,15 @@
 CACHE MANIFEST 
 
 CACHE:
+fonts/FONTS.LICENSE
+fonts/LiberationMono-Regular.ttf
+kpatch/900.c
+kpatch/900.d
+kpatch/900.elf
+kpatch/900.o
+kpatch/script.ld
+kpatch/types.h
+kpatch/utils.h
 cache.html
 config.mjs
 style.css
