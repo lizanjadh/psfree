@@ -3,6 +3,8 @@ CACHE MANIFEST
 CACHE:
 cache.html
 config.mjs
+style.css
+img.jpg
 alert.mjs
 payload.bin
 send.mjs
