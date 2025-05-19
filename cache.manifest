@@ -1,7 +1,9 @@
 CACHE MANIFEST 
 
 CACHE:
+fonts/FONTS.LICENSE
 fonts/LiberationMono-Regular.ttf
+fonts/README.txt
 cache.html
 config.mjs
 style.css
