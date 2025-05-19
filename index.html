@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest" lang="en">
+<html>
 <head>
 <meta charset='utf-8'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -216,7 +216,9 @@ h1 {
         <p>Special thanks to abc for the PSFree webkit exploit & Lapse kernel exploit</p>
     </div>
 </div>
-
+    <script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+    </script>
 <script src="./payload.js"></script>
 <script type="module" src="./alert.mjs"></script>
 
