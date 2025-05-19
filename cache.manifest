@@ -1,19 +1,6 @@
-CACHE MANIFEST
-# v1.0
+CACHE MANIFEST 
 
 CACHE:
-COPYING
-LICENSE
-README.md
-about.html
-alert.mjs
-config.mjs
-index.html
-lapse.mjs
-payload.bin
-payload.js
-psfree.mjs
-send.mjs
 fonts/FONTS.LICENSE
 fonts/LiberationMono-Regular.ttf
 fonts/README.txt
@@ -21,20 +8,31 @@ kpatch/900.c
 kpatch/900.d
 kpatch/900.elf
 kpatch/900.o
-kpatch/Makefile
 kpatch/script.ld
 kpatch/types.h
 kpatch/utils.h
-module/chain.mjs
-module/constants.mjs
-module/int64.mjs
-module/mem.mjs
-module/memtools.mjs
-module/offset.mjs
+kpatch/Makefile
+cache.html
+config.mjs
+style.css
+img.jpg
+alert.mjs
+payload.bin
+send.mjs
+about.html
+index.html
+lapse.mjs
+payload.js
+psfree.mjs
+rop/900.mjs
 module/rw.mjs
 module/utils.mjs
+module/mem.mjs
+module/int64.mjs
+module/constants.mjs
+module/offset.mjs
 module/view.mjs
-rop/900.mjs
-
-NETWORK:
-*
+module/memtools.mjs
+module/chain.mjs
+NETWORK: 
+* 
