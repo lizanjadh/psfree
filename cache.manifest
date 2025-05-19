@@ -1,9 +1,6 @@
 CACHE MANIFEST 
 
 CACHE:
-fonts/FONTS.LICENSE
-fonts/LiberationMono-Regular.ttf
-fonts/README.txt
 kpatch/900.c
 kpatch/900.d
 kpatch/900.elf
