@@ -1,46 +1,236 @@
-<!-- Copyright (C) 2023-2025 anonymous
+<!DOCTYPE html>
+<html manifest="cache.manifest" lang="en">
+<head>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS-Flaps 9.00 Exploit Chain - BoredMonkeyMan Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+/* same theme variables and styles from your last code — removed buttons only */
+:root {
+    --primary: #121212;
+    --secondary: #1E1E1E;
+    --accent: #3A86FF;
+    --text: #F5F5F5;
+    --text-secondary: #B0B0B0;
+    --console-bg: #0D0D0D;
+    --border: #2A2A2A;
+}
 
-This file is part of PSFree.
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--primary);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
 
-PSFree is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
 
-PSFree is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
 
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
--->
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <title>PSFree-Lapse Exploit For 9.00</title>
-        <style>
-            @font-face {
-                font-family: 'logging';
-                src: url('fonts/LiberationMono-Regular.ttf');
-            }
-            #console {
-                font-family: 'logging';
-            }
-        </style>
-    </head>
-    <body>
-        PSFree: A PS4/PS5 Exploit Chain<br>
-        Donation (Monero/XMR):<br>
-        86Fk3X9AE94EGKidzRbvyiVgGNYD3qZnuKNq1ZbsomFWXHYm6TtAgz9GNGitPWadkS3Wr9uXoT29U1SfdMtJ7QNKQpW1CVS<br>
-        See <a href='./about.html' data-jslicense='1'>JavaScript license information</a> for the
-        source code and license.<br>
-        <pre id='console'></pre>
-    </body>
-    <script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-    </script>
-    <link rel="stylesheet" href="style.css">
-    <script src="payload.js"></script>
-    <script type='module' src='./alert.mjs'></script>
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: var(--accent);
+}
+
+h1 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(58,134,255,0.3));
+}
+
+.card {
+    background-color: var(--secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.card-title {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#console {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--console-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    min-height: 250px;
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    margin-top: 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.credits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.credit-item {
+    background-color: rgba(255,255,255,0.03);
+    padding: 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.credit-item:hover {
+    background-color: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+}
+
+.credit-name {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.credit-role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <svg class="logo" viewBox="0 0 24 24"><path fill="var(--accent)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <h1>PS-Flaps Boredmonkeyman edition</h1>
+        <div class="subtitle">PS4 9.00 Auto Goldhen</div>
+        <div class="card">
+            <div class="card-title">
+                <span style="width:10px; height:10px; border-radius:50%; background:limegreen; box-shadow:0 0 8px limegreen;"></span>
+                System Ready
+            </div>
+            <p>Exploit Complete = Done! Any ERROR = KP 2/5 mins later Reboot and run again</p>
+        </div>
+    </header>
+
+    
+<div class="card">
+    <div class="card-title">
+        <svg width="16" height="16" viewBox="0 0 24 24"><path fill="var(--accent)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/></svg>
+        Donations Appreciated
+    </div>
+    <p>Accepting any donations — even a penny helps support future projects:</p>
+    <ul style="list-style:none; padding:0; margin:1rem 0 0 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+        <li><strong>TRX:</strong> TKdJXyopnrTafFvFuDJ2BA8j6yHRpWutuk</li>
+        <li><strong>ETH:</strong> 0x2525bC1f865229C6B897353f64fFeF471B0B6e1b</li>
+        <li><strong>SOL:</strong> 7aE5Y7PvfUr52WnruiDATFpR99PWPo4q9U7vu3Hid3Yh</li>
+        <li><strong>USDT (ETH):</strong> 0x2525bC1f865229C6B897353f64fFeF471B0B6e1b</li>
+    </ul>
+</div>
+
+<div class="card">
+        <div class="card-title">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path fill="var(--accent)" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Exploit Console
+        </div>
+        <pre id="console">Waiting for user interaction...</pre>
+    </div>
+
+    <div class="footer">
+        <h3>Development Credits</h3>
+        <div class="credits-grid">
+            <div class="credit-item">
+                <div class="credit-name">Jhon</div>
+                <div class="credit-role">Webkit Exploit</div>
+            </div>
+            <div class="credit-item">
+                <div class="credit-name">SiSTR0</div>
+                <div class="credit-role">Kernel Research</div>
+            </div>
+            <div class="credit-item">
+                <div class="credit-name">CTN</div>
+                <div class="credit-role">Payload Development</div>
+            </div>
+            <div class="credit-item">
+                <div class="credit-name">Al-Azif</div>
+                <div class="credit-role">PS4 Exploit Pioneer</div>
+            </div>
+            <div class="credit-item">
+                <div class="credit-name">Kameleon</div>
+                <div class="credit-role">Research & Development</div>
+            </div>
+            <div class="credit-item">
+                <div class="credit-name">boredmonkeyman</div>
+                <div class="credit-role">Host & Interface Design</div>
+            </div>
+        </div>
+        <p>Special thanks to abc for the PSFree webkit exploit & Lapse kernel exploit</p>
+    </div>
+</div>
+
+<script src="./payload.js"></script>
+<script type="module" src="./alert.mjs"></script>
+
+<script>
+  if (window.applicationCache) {
+    window.applicationCache.addEventListener('cached', function() {
+      alert("Site cached for offline use!");
+    }, false);
+
+    window.applicationCache.addEventListener('updateready', function() {
+      alert("Site cache updated — restart your browser to apply.");
+    }, false);
+  }
+</script>
+
+</body>
 </html>
