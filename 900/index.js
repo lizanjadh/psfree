@@ -37,7 +37,7 @@ document.getElementById('jailbreak').addEventListener('click', () => {
   if (checkbox.checked) {
     if (confirm('The jailbreak is going to start please confirm !\nWARNING :\nThis option make the jailbreak unstable and this option is not recommended please use the jailbreak button instead !')) {
       loadMultipleScripts(
-        ["./payloads/payload.js", "./psfree/alert.mjs"],
+        ["./payload.js", "./alert.mjs"],
         () => { console.log("All scripts are loaded !"); }
       );
     }
