@@ -6,6 +6,9 @@
 
 <div class="container">
     <header>
+
+
+
 <img src="./logo.png" width="100" height="50">
 
         <h1>PSFree Webkit + Lapse Kernel Exploit</h1>
@@ -17,11 +20,20 @@
             </div>
             <p>Restart your PS4 if the exploit fails for the first time.</p>
         </div>
+
+<div id="jailbreak-page">
+      <div class="center-btn-wrap">
+        <button id="jailbreak" class="ps-btn" title="PlayStation">
+<img src="./logo.svg" width="100" height="50"></button>
+
+
+
+
 <script>
 if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
 </script>
-  <script src="payload.js"></script>
-  <script type='module' src='./alert.mjs'></script>
+  <script src='./index.js'></script>
+    <script src='./payloads.js'></script>
 </head>
 <body>
  <div class="card">
@@ -31,6 +43,12 @@ if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
         </div>
         <pre id="console">Waiting for user interaction...</pre>
     </div>
+
+
+
+
+
+
 </body>
 
 <style>
@@ -92,6 +110,15 @@ h1 {
     height: 80px;
     margin-bottom: 1rem;
     filter: drop-shadow(0 0 10px rgba(58,134,255,0.3));
+}
+
+.ps-btn {
+    padding: 10px 20px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 #console {
