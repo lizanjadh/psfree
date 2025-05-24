@@ -24,7 +24,7 @@ function loadMultipleScripts(files, callback) {
 function showlinuxpayloads() {
 document.getElementById('jailbreak').addEventListener('click', () => {
     loadMultipleScripts(
-        ["./payloads/payload.js", "./psfree/alert.mjs"],
+        ["./payload.js", "./alert.mjs"],
         () => { console.log("All scripts are loaded !"); }
     );
 });
