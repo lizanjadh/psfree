@@ -20,11 +20,6 @@ function loadMultipleScripts(files, callback) {
   });
 }
 
-function closeabout() {
-  document.getElementById('about-popup').style.display = 'none'; // Hide popup
-  document.getElementById('overlay-popup').style.display = 'none'; // Hide overlay
-}
-
 function CheckFW() {
   var fwUA = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple'));
   var FwUAR = fwUA.replace("PlayStation 4/","");
