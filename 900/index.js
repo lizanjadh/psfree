@@ -27,17 +27,6 @@ document.getElementById('jailbreak').addEventListener('click', () => {
     );
 });
 
-document.getElementById('update-exploit').addEventListener('click', () => {
-  fetch('/update_exploit', { method: 'POST' })
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('console').textContent = data.results.join('\n') + "\nPlease don't forget to update the cache !";
-    })
-    .catch(err => {
-      alert('Error: ' + err + "\nThis option only work on local server !\nPlease make sure you'r server is up.");
-    });
-});
-
 const checkbox = document.getElementById('autogoldhen');
 
 function onCheckboxChange(checked) {
