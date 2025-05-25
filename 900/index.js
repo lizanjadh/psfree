@@ -27,17 +27,6 @@ document.getElementById('jailbreak').addEventListener('click', () => {
     );
 });
 
-document.getElementById('generate-cache-btn').addEventListener('click', () => {
-  fetch('/generate_manifest', { method: 'POST' })
-    .then(response => response.json())
-    .then(data => {
-      alert(data.message);
-    })
-    .catch(error => {
-      alert('Error: ' + error + "\nThis option only work on local server !\nPlease make sure you'r server is up.");
-    });
-});
-
 document.getElementById('update-exploit').addEventListener('click', () => {
   fetch('/update_exploit', { method: 'POST' })
     .then(res => res.json())
