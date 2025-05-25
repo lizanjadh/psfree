@@ -20,21 +20,6 @@ function loadMultipleScripts(files, callback) {
   });
 }
 
-function showpayloads() {
-  if (document.getElementById('payloadsbtn').textContent == 'Payloads') {
-  document.getElementById('jailbreak-page').style.display = 'none';
-  document.getElementById('PS4FW').style.display = 'none';
-  document.getElementById('payloads-page').style.display = 'block';
-  document.getElementById('payloadsbtn').textContent = 'Jailbreak';
-  }else{
-  document.getElementById('jailbreak-page').style.display = 'block';
-  document.getElementById('PS4FW').style.display = 'flex';
-  document.getElementById('payloads-page').style.display = 'none';
-  document.getElementById('payloadsbtn').textContent = 'Payloads';
-  };
-  CheckFW();
-}
-
 function showtoolspayloads() {
   document.getElementById('payloads-linux').style.display = 'none';
   document.getElementById('payloads-game').style.display = 'none';
