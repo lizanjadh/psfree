@@ -20,20 +20,6 @@ function loadMultipleScripts(files, callback) {
   });
 }
 
-function CheckFW() {
-  var fwUA = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple'));
-  var FwUAR = fwUA.replace("PlayStation 4/","");
-  if (FwUAR == "9.00") {
-    document.getElementById('PS4FW').textContent = `PS4 FW: ${FwUAR} | Compatible`;
-    document.getElementById('PS4FW').style.color = 'green';
-  }else{
-    document.getElementById('PS4FW').textContent = `PS4 FW: ${FwUAR} | Incompatible`;
-    document.getElementById('PS4FW').style.color = 'red';
-    document.getElementById('jailbreak-page').style.display = 'none';
-    document.getElementById('payloadsbtn').style.display = 'none';
-  };
-}
-
 function showpayloads() {
   if (document.getElementById('payloadsbtn').textContent == 'Payloads') {
   document.getElementById('jailbreak-page').style.display = 'none';
