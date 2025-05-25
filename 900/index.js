@@ -20,6 +20,25 @@ function loadMultipleScripts(files, callback) {
   });
 }
 
+function closeabout() {
+  document.getElementById('about-popup').style.display = 'none'; // Hide popup
+  document.getElementById('overlay-popup').style.display = 'none'; // Hide overlay
+}
+
+function CheckFW() {
+  var fwUA = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple'));
+  var FwUAR = fwUA.replace("PlayStation 4/","");
+  if (FwUAR == "9.00") {
+    document.getElementById('PS4FW').textContent = `PS4 FW: ${FwUAR} | Compatible`;
+    document.getElementById('PS4FW').style.color = 'green';
+  }else{
+    document.getElementById('PS4FW').textContent = `PS4 FW: ${FwUAR} | Incompatible`;
+    document.getElementById('PS4FW').style.color = 'red';
+    document.getElementById('jailbreak-page').style.display = 'none';
+    document.getElementById('payloadsbtn').style.display = 'none';
+  };
+}
+
 function showpayloads() {
   if (document.getElementById('payloadsbtn').textContent == 'Payloads') {
   document.getElementById('jailbreak-page').style.display = 'none';
@@ -36,11 +55,50 @@ function showpayloads() {
 }
 
 function showtoolspayloads() {
+  document.getElementById('payloads-linux').style.display = 'none';
+  document.getElementById('payloads-game').style.display = 'none';
+  document.getElementById('payloads-tools').style.display = 'block';
+}
+
+function showgamepayloads() {
+  document.getElementById('payloads-linux').style.display = 'none';
+  document.getElementById('payloads-game').style.display = 'block';
+  document.getElementById('payloads-tools').style.display = 'none';
+}
+
+function showlinuxpayloads() {
+  document.getElementById('payloads-linux').style.display = 'block';
+  document.getElementById('payloads-game').style.display = 'none';
+  document.getElementById('payloads-tools').style.display = 'none';
+}
+
 document.getElementById('jailbreak').addEventListener('click', () => {
     loadMultipleScripts(
         ["./payload.js", "./alert.mjs"],
         () => { console.log("All scripts are loaded !"); }
     );
+});
+
+document.getElementById('generate-cache-btn').addEventListener('click', () => {
+  fetch('/generate_manifest', { method: 'POST' })
+    .then(response => response.json())
+    .then(data => {
+      alert(data.message);
+    })
+    .catch(error => {
+      alert('Error: ' + error + "\nThis option only work on local server !\nPlease make sure you'r server is up.");
+    });
+});
+
+document.getElementById('update-exploit').addEventListener('click', () => {
+  fetch('/update_exploit', { method: 'POST' })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('console').textContent = data.results.join('\n') + "\nPlease don't forget to update the cache !";
+    })
+    .catch(err => {
+      alert('Error: ' + err + "\nThis option only work on local server !\nPlease make sure you'r server is up.");
+    });
 });
 
 const checkbox = document.getElementById('autogoldhen');
