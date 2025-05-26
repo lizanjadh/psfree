@@ -1,23 +1,12 @@
-
-function loadMultipleScripts(files, callback) {
-  let loaded = 0;
-  files.forEach(src => {
-    // Vérifier si le script est déjà dans la page (éviter les doublons)
-    if(document.querySelector('script[src="' + src + '"]')) return;
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    script.onload = () => {
-      loaded++;
-      if(loaded === files.length && typeof callback === "function") callback();
-    };
-    script.onerror = () => {
-      loaded++;
-      console.error("Erreur de chargement:", src);
-      if(loaded === files.length && typeof callback === "function") callback();
-    };
-    document.body.appendChild(script);
-  });
+async function loadMultipleModules(files) {
+  try {
+    // Dynamically import all modules
+    const modules = await Promise.all(files.map(file => import(file)));
+    return modules; // array of imported modules
+  } catch (error) {
+    console.error("Error loading modules:", error);
+    throw error;
+  }
 }
 
 function showabout() {
@@ -32,7 +21,7 @@ function closeabout() {
 
 function CheckFW() {
   var fwUA = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple'));
-  var FwUAR = fwUA.replace("PlayStation 4/","");
+  var FwUAR = fwUA.replace("layStation 4/","");
   if (FwUAR == "9.00") {
     document.getElementById('PS4FW').textContent = `PS4 FW: ${FwUAR} | Compatible`;
     document.getElementById('PS4FW').style.color = 'green';
@@ -50,11 +39,14 @@ function showpayloads() {
   document.getElementById('PS4FW').style.display = 'none';
   document.getElementById('payloads-page').style.display = 'block';
   document.getElementById('payloadsbtn').textContent = 'Jailbreak';
+  localStorage.setItem('visibleDiv', 'payloads-page');
   }else{
   document.getElementById('jailbreak-page').style.display = 'block';
   document.getElementById('PS4FW').style.display = 'flex';
   document.getElementById('payloads-page').style.display = 'none';
   document.getElementById('payloadsbtn').textContent = 'Payloads';
+  localStorage.setItem('visibleDiv', 'jailbreak-page');
+
   };
   CheckFW();
 }
@@ -77,11 +69,66 @@ function showlinuxpayloads() {
   document.getElementById('payloads-tools').style.display = 'none';
 }
 
+async function jailbreak() {
+  try {
+    const modules = await loadMultipleModules([
+      './goldhen.js',
+      './alert.mjs'
+    ]);
+    console.log("All modules are loaded!");
+
+    const goldhenModule = modules[0];
+    if (goldhenModule && typeof goldhenModule.GoldHEN === 'function') {
+      goldhenModule.GoldHEN();
+    } else {
+      console.error("GoldHEN function not found in goldhen.js module");
+    }
+  } catch (e) {
+    console.error("Failed to jailbreak:", e);
+  }
+}
+
+function isHttps() {
+  return window.location.protocol === 'https:';
+}
+
+async function Loadpayloads(payload) {
+  try {
+    let modules;
+
+    if (isHttps()) {
+      modules = await loadMultipleModules([
+        '../payloads/payloads.js',
+        './alert.mjs'
+      ]);
+      console.log("All modules are loaded!");
+    } else {
+      modules = await loadMultipleModules([
+        '../payloads/payloads.js'
+      ]);
+      console.log("All modules are loaded!");
+    }
+
+    const payloadModule = modules[0];
+    if (payloadModule && typeof payloadModule[payload] === 'function') {
+      payloadModule[payload]();
+    } else {
+      console.error(`${payload} function not found in payloads.js module`);
+    }
+  } catch (e) {
+    console.error(`Failed to load ${payload}:`, e);
+  }
+}
+
 document.getElementById('jailbreak').addEventListener('click', () => {
-    loadMultipleScripts(
-        ["./payload.js", "./alert.mjs"],
-        () => { console.log("All scripts are loaded !"); }
-    );
+  jailbreak();
+});
+
+document.querySelectorAll('button[data-func]').forEach(button => {
+  button.addEventListener('click', () => {
+    const payload = button.getAttribute('data-func');
+    Loadpayloads(payload);
+  });
 });
 
 document.getElementById('generate-cache-btn').addEventListener('click', () => {
@@ -123,15 +170,24 @@ window.addEventListener('DOMContentLoaded', () => {
     onCheckboxChange(checkbox.checked);
   }
 
-  // Show alert if checkbox is checked on page load
   if (checkbox.checked) {
     if (confirm('The jailbreak is going to start please confirm !\nWARNING :\nThis option make the jailbreak unstable and this option is not recommended please use the jailbreak button instead !')) {
-      loadMultipleScripts(
-        ["./payload.js", "./alert.mjs"],
-        () => { console.log("All scripts are loaded !"); }
-      );
+      jailbreak();
     }
-    
+  }
+
+  const visibleDiv = localStorage.getItem('visibleDiv') || 'jailbreak-page';
+  if (visibleDiv === 'jailbreak-page') {
+    document.getElementById('jailbreak-page').style.display = 'block';
+    document.getElementById('PS4FW').style.display = 'flex';
+    document.getElementById('payloads-page').style.display = 'none';
+    document.getElementById('payloadsbtn').textContent = 'Payloads';
+  } else {
+    document.getElementById('jailbreak-page').style.display = 'none';
+    document.getElementById('PS4FW').style.display = 'none';
+    document.getElementById('payloads-page').style.display = 'block';
+    document.getElementById('payloadsbtn').textContent = 'Jailbreak';
+    localStorage.setItem('visibleDiv', 'payloads-page');
   }
 });
 

@@ -1,127 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>*PSFree Webkit+Lapse Kernel Exploit PS4 9.00 Firmware*</title>
-<meta charset="UTF-8">
-<div class="container">
-<header>
-<img src="./logo.svg" width="100" height="50">
+<html manifest="./none.manifest">
+  <head>
+    <script>
+        function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";}
+        function DisplayCacheProgress(){setTimeout(function(){;document.title="Cache Success !";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+    </script>
+    <meta charset="UTF-8">
+    <title>PSFree Webkit + Lapse Kernel Exploit</title>
+    <link rel='stylesheet' href='./index.css'>
+  </head>
+  <body>
+    
 
+    <div class="header">
+      <img src="./logo.svg" width="50" height="50" ></button>
+     </div>
+    </div>
+    
 <h1>PSFree Webkit + Lapse Kernel Exploit</h1>
-<div class="subtitle">PS4 9.00 Auto Goldhen</div>
-<div class="card">
-<div class="card-title">
-<span style="width:10px; height:10px; border-radius:50%; background:limegreen; box-shadow:0 0 8px limegreen;"></span>
 
-System Ready
-</div>
-<p>Press the GoldHen icon to start the Exploit..</p>
-</div>
+    <h2 id="PS4FW">Firware Compatible</h2>
 
-<div id="jailbreak-page">
-<div class="center-btn-wrap">
-<button id="jailbreak" class="ps-btn" title="PlayStation">
-<img src="./logo.png" width="100" height="50"></button>
+    <div id="jailbreak-page">
+      <div class="center-btn-wrap">
+        <button id="jailbreak" class="ps-btn" title="PlayStation">
+          <!-- PlayStation SVG logo -->
+          <img src="./logo.png" width="100" height="50"
+        </button>
+        <label>
 
-<script src='./index.js'></script>
-<script src='./payload.js'></script>
-</head>
+        </label>
+      </div>
+   
+    </div>
+    
+    <h3>Exploit Console</h3>
+    
+    <div class="console" style="padding: 20px;"><pre id='console'>Waiting for user interaction...</pre></div>
 
-<body>
-<div class="card">
-<div class="card-title">
-<svg width="16" height="16" viewBox="0 0 24 24"><path fill="var(--accent)" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+   
 
-Exploit Console
-</div>
-<pre id="console">Waiting for user interaction...</pre>
-</div>
-</body>
-
-<style>
-/* same theme variables and styles from your last code — removed buttons only */
-:root {
-    --primary: #121212;
-    --secondary: #1E1E1E;
-    --accent: #FFD700;
-    --text: #F5F5F5;
-    --text-secondary: #B0B0B0;
-    --console-bg: #0D0D0D;
-    --border: #2A2A2A;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--primary);
-    color: var(--text);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-}
-
-header::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 2px;
-    background: var(--accent);
-}
-
-h1 {
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    font-size: 2.5rem;
-}
-
-.logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1rem;
-    filter: drop-shadow(0 0 10px rgba(58,134,255,0.3));
-}
-
-.ps-btn {
-    padding: 10px 20px;
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#console {
-    font-family: 'JetBrains Mono', monospace;
-    background-color: var(--console-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    min-height: 250px;
-    max-height: 400px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    margin-top: 1.5rem;
-    border: 1px solid var(--border);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-    line-height: 1.5;
-    font-size: 0.9rem;
-}
-</style>
+    <script src='./index.js'></script>
+    <script>
+      CheckFW()
+    </script>
+  </body>
 </html>
