@@ -1,0 +1,27 @@
+CACHE MANIFEST
+# Versión 1.0 - Caché offline para PS5-Relapse
+
+CACHE:
+# Archivo HTML principal
+index.html
+serve.py
+
+# Archivos JavaScript requeridos
+./src/firmware.js
+./src/kexp.js
+./src/main.js
+./src/relapse_exploit.js
+./src/rop.js
+./src/site.js
+./src/utils/int64.js
+./src/utils/mem.js
+./src/utils/rop_slave.js
+./src/utils/syscalls.js
+./payloads/elfldr-ps5-1360.elf
+./payloads/kexp_2026_05_25.bin
+./payloads/kstuff.elf
+./payloads/shadowmountplus.elf
+./offsets/13.20.js
+
+NETWORK:
+*
