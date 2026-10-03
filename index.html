@@ -19,13 +19,29 @@
   <script src="./src/utils/syscalls.js"></script>
   <script type="module" src="./src/site.js"></script>
 </body>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then((reg) => console.log('Service Worker registrado con éxito:', reg.scope))
-        .catch((err) => console.log('Falló el registro del Service Worker:', err));
-    });
-  }
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página en Caché</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f0f0f0; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>¡Esta página está guardada!</h1>
+        <p>Si apagas tu internet y recargas la página, seguirá funcionando.</p>
+    </div>
+
+    <script>
+        // Este código le dice al navegador que guarde la página
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('Service Worker registrado con éxito.'))
+                .catch(err => console.log('Error al registrar:', err));
+        }
+    </script>
+</body>
 </html>
