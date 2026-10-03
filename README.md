@@ -1,37 +1,24 @@
-# PSFree version 1.5.0
+# PS5 Relapse Exploit
+Supported firmware: 7.00 through 13.60.
 
-Lapse Kex ported to 9.00 - WIP
+## Usage
+- In the network settings, set Primary DNS to `45.56.67.85` (Recommended)
+- Run `python serve.py` locally, or open https://ntfargo.github.io/Relapse-Exploit/ on the PS5.
+- The default payloads are stored in `payloads/` after a successful run, the ELF loader listens on port `9021`.
+- After elfldr starts on port `9021`, you can press R2 to send `kstuff.elf`, `shadowmountplus.elf`, then `etaHEN.elf`.
 
-Very fast and reliable but can KP :P
+## Stability notes
+Webkit may need several attempts, reload the page if the browser stalls. The kernel exploit may hang or panic the console, so reboot before trying again if that happens.
 
-TODO:
-- Some performance Tweaks??.
-- Payload Loader will look for payload.bin provided on this repo, you can swap it with another payload.
-  
-PR are welcome!!!
+## Exploit chain
+Browser stage uses JSC info leaks and a structured clone object pool mismatch to corrupt a typedarray. The kernel stage combines a address leak with an `aio_multi_wait` uaf race to establish kernel r/w.
 
-Credits:
-- Jhon https://github.com/janisslsm
-- SiSTR0 https://github.com/SiSTR0
-- CTN https://github.com/ctn123
-- Al-Azif https://github.com/al-azif
-- abc for PSFree webkit exploit & Lapse kernel Exploit
+## Credits
+ntfargo, ufm42, Sonic_Iso, Jordy, Dr. Yenyen, TheFlow, SlidyBat,  Flatz, cow, nhk, bollarz, Sleirsgoevy, EchoStretch, EarthOnion.
 
-PSFree is a collection of exploits for the PS4 console. The main focus of the 
-repo is for the PS4 but we try to make things portable to PS5.
+Discord: [PS5 Research & Development](https://discord.gg/Eea73sskbC)
 
-* Exploits
-  * PSFree: src/psfree.mjs
-  * Lapse (kernel): src/scripts/lapse.mjs
+## Disclaimer
+This project is intended for **educational and security research purposes only**. It does not endorse piracy, unauthorized access, or misuse of commercial devices. Use it only on devices you own or are authorized to test, and comply with applicable laws and regulations.
 
-Developer [abc] Donation (Monero/XMR):
-86Fk3X9AE94EGKidzRbvyiVgGNYD3qZnuKNq1ZbsomFWXHYm6TtAgz9GNGitPWadkS3Wr9uXoT29U1SfdMtJ7QNKQpW1CVS
-
-# COPYRIGHT AND AUTHORS:
-AGPL-3.0-or-later (see src/COPYING). This repo belongs to the group
-`anonymous`. We refer to anonymous contributors as "anonymous" as well.
-
-# CREDITS:
-* anonymous for PS4 firmware kernel dumps
-* Check the appropriate files for any **extra** contributors. Unless otherwise
-  stated, everything here can also be credited to us.
+The software is provided as-is, without warranty. You assume the risks of using it, including system instability, data loss, and account bans. The maintainers accept no liability for resulting damage. 
