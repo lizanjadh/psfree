@@ -20,17 +20,17 @@
   <script type="module" src="./src/site.js"></script>
 
   <div class="card">
-        <h1>¡Esta página está guardada!</h1>
-        <p>Si apagas tu internet y recargas la página, seguirá funcionando.</p>
+    <h1>¡Esta página está guardada!</h1>
+    <p>Si apagas tu internet y recargas la página, seguirá funcionando.</p>
   </div>
 
   <script>
-        // Este código le dice al navegador que guarde la página
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js')
-                .then(() => console.log('Service Worker registrado con éxito.'))
-                .catch(err => console.log('Error al registrar:', err));
-        }
+    // Este código le dice al navegador que guarde la página
+   if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+    .then(() => console.log('Service Worker registrado con éxito.'))
+    .catch(err => console.log('Error al registrar:', err));
+    }
   </script>
 </body>
 </html>
