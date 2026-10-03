@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <!-- Se ha eliminado la etiqueta de Cache-Control que impedía el almacenamiento -->
   <title>PS5-Relapse</title>
   <style>
     html, body {
@@ -18,18 +18,17 @@
   <script src="./src/rop.js"></script>
   <script src="./src/utils/syscalls.js"></script>
   <script type="module" src="./src/site.js"></script>
-
-  <div class="card">
-    <h1>¡Esta página está guardada!</h1>
-    <p>Si apagas tu internet y recargas la página, seguirá funcionando.</p>
-  </div>
-
+  
+  <!-- Código agregado para registrar el caché offline -->
   <script>
-    // Este código le dice al navegador que guarde la página
-   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-    .then(() => console.log('Service Worker registrado con éxito.'))
-    .catch(err => console.log('Error al registrar:', err));
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./sw.js').then(function(registration) {
+          console.log('Caché offline registrado exitosamente.');
+        }).catch(function(error) {
+          console.error('Error al registrar el caché offline:', error);
+        });
+      });
     }
   </script>
 </body>
