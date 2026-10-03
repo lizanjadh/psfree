@@ -1,6 +1,5 @@
 const CACHE_NAME = 'sitio-offline-v1';
 const urlsToCache = [
-  '/',
   '/index.html',
   '/serve.py',
   '/src/firmware.js',
